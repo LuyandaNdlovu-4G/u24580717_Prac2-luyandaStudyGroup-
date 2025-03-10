@@ -1,0 +1,59 @@
+﻿@* Interface Enumarable = Enumarate or list (to ascertain the number of : count) *@
+
+@model IEnumerable<u24580717_Prac2_luyandaStudyGroup_.Models.Student>
+
+@{
+    ViewBag.Title = "StudentView";
+}
+
+<h2>Students Details</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create") >> In this overload it is the name and the action >> Link going nowhere.
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().StudentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.myLink)
+        </th>
+    </tr>
+
+    @foreach (var item in Model) //For each person
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                <a href="@Url.Content(item.myLink)" class="btn btn-primary" target="_blank">Link</a>
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>

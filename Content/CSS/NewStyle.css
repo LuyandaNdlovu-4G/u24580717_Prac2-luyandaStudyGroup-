@@ -1,0 +1,157 @@
+﻿/* Reset some default styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Background and general styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #222;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-evenly; /* Evenly distribute nav items */
+        align-items: center;
+    }
+
+        nav ul li {
+            flex-grow: 1; /* Ensures equal spacing */
+            text-align: center;
+            padding: 12px 0;
+        }
+
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 12px 20px;
+                display: block;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                nav ul li a:hover {
+                    background-color: rgba(255, 255, 255, 0.2); /* Slight hover effect */
+                }
+
+                /* Keep the active page highlighted */
+                nav ul li a.active {
+                    background-color: darkred;
+                    border-radius: 5px;
+                }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+        nav ul li {
+            width: 100%;
+        }
+}
+
+/* Page Header */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 28px;
+    color: #444;
+}
+
+/* Sections */
+section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+h2 {
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* Images */
+img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    /* Flip image on hover */
+    img:hover {
+        transform: scaleX(-1);
+    }
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #444;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+        nav ul li {
+            border-right: none;
+            border-bottom: 1px solid white;
+        }
+
+    section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    img {
+        width: 100px;
+    }
+}
