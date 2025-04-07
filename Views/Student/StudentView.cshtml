@@ -1,6 +1,4 @@
-﻿@* Interface Enumarable = Enumarate or list (to ascertain the number of : count) *@
-
-@model IEnumerable<u24580717_Prac2_luyandaStudyGroup_.Models.Student>
+﻿@model IEnumerable<u24580717_Prac2_luyandaStudyGroup_.Models.Student>
 
 @{
     ViewBag.Title = "StudentView";
@@ -8,52 +6,59 @@
 
 <h2>Students Details</h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create") >> In this overload it is the name and the action >> Link going nowhere.
-    </p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.First().StudentNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.myLink)
-        </th>
-    </tr>
-
-    @foreach (var item in Model) //For each person
-    {
+<table class="table table-striped table-hover" id="studentsTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
-                <a href="@Url.Content(item.myLink)" class="btn btn-primary" target="_blank">Link</a>
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>*@
+            <th>@Html.DisplayNameFor(model => model.First().StudentNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
+            <th>@Html.DisplayNameFor(model => model.myLink)</th>
+            <th>Actions</th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StudentNumber)</td>
+                <td class="first-name">@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
+                <td>
+                    <a href="@Url.Content(item.myLink)" class="btn btn-primary" target="_blank">Link</a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const deleteButtons = document.querySelectorAll(".delete-btn");
+            const rows = document.querySelectorAll("#studentsTable tbody tr");
+
+            deleteButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const row = this.closest("tr");
+                    if (confirm("Are you sure you want to delete this row?")) {
+                        row.remove();
+                    }
+                });
+            });
+
+           
+            const targetLetter = "A"; 
+            rows.forEach(row => {
+                const firstNameCell = row.querySelector(".first-name");
+                if (firstNameCell && firstNameCell.textContent.trim().startsWith(targetLetter)) {
+                    row.style.color = "red";
+                }
+            });
+        });
+    </script>
+}
